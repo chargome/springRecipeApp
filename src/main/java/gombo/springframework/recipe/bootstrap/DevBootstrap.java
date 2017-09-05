@@ -4,6 +4,8 @@ import gombo.springframework.recipe.models.*;
 import gombo.springframework.recipe.repositories.CategoryRepository;
 import gombo.springframework.recipe.repositories.RecipeRepository;
 import gombo.springframework.recipe.repositories.UnitOfMeasureRepository;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -14,6 +16,8 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+@Data
+@Slf4j
 @Component
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent>
 {
@@ -47,6 +51,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent>
 
     private void initData()
     {
+        log.debug("initializing bootstrap data");
 
 
         // Get UOM
@@ -190,6 +195,8 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent>
         tacos.getIngredients().add(new Ingredient("lime, cut into wedges", new BigDecimal(4), piece, tacos));
 
         recipeRepository.save(tacos);
+
+        log.debug("initialisation completed");
 
 
     }
