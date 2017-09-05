@@ -2,12 +2,12 @@ package gombo.springframework.recipe.service;
 
 import gombo.springframework.recipe.models.Recipe;
 import gombo.springframework.recipe.repositories.RecipeRepository;
+import org.springframework.stereotype.Service;
 
-import java.util.Set;
-
+@Service
 public class RecipeServiceImpl implements RecipeService
 {
-    private RecipeRepository recipeRepository;
+    private final RecipeRepository recipeRepository;
 
     public RecipeServiceImpl(RecipeRepository recipeRepository)
     {
@@ -15,9 +15,9 @@ public class RecipeServiceImpl implements RecipeService
     }
 
     @Override
-    public Set<Recipe> getAllRecipes()
+    public Iterable<Recipe> getAllRecipes()
     {
-        return (Set<Recipe>) recipeRepository.findAll();
+        return recipeRepository.findAll();
     }
 
     @Override

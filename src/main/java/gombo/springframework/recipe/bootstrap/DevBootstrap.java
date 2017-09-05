@@ -6,6 +6,7 @@ import gombo.springframework.recipe.repositories.RecipeRepository;
 import gombo.springframework.recipe.repositories.UnitOfMeasureRepository;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -14,7 +15,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Component
-public class DevBootstrap implements ApplicationListener
+public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent>
 {
 
     private RecipeRepository recipeRepository;
@@ -26,12 +27,6 @@ public class DevBootstrap implements ApplicationListener
         this.recipeRepository = recipeRepository;
         this.categoryRepository = categoryRepository;
         this.unitOfMeasureRepository = unitOfMeasureRepository;
-    }
-
-    @Override
-    public void onApplicationEvent(ApplicationEvent applicationEvent)
-    {
-        initData();
     }
 
     private void isValidUom (Optional<UnitOfMeasure> uom)
@@ -122,7 +117,6 @@ public class DevBootstrap implements ApplicationListener
                 "\n" +
                 "\n" +
                 "Read more: http://www.simplyrecipes.com/recipes/perfect_guacamole/#ixzz4jvoun5ws");
-        guacNotes.setRecipe(guacamole);
         guacamole.setNotes(guacNotes);
 
         guacamole.getIngredients().add(new Ingredient("ripe avocados", new BigDecimal(2), piece, guacamole));
@@ -170,7 +164,6 @@ public class DevBootstrap implements ApplicationListener
                 "\n" +
                 "\n" +
                 "Read more: http://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/#ixzz4jvu7Q0MJ");
-        tacoNotes.setRecipe(tacos);
         tacos.setNotes(tacoNotes);
 
         tacos.getCategories().add(mexican);
@@ -202,5 +195,9 @@ public class DevBootstrap implements ApplicationListener
     }
 
 
-
+    @Override
+    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent)
+    {
+        initData();
+    }
 }

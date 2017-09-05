@@ -1,7 +1,10 @@
 package gombo.springframework.recipe.models;
 
+import lombok.*;
+
 import javax.persistence.*;
 
+@Data
 @Entity
 public class Notes
 {
@@ -16,33 +19,13 @@ public class Notes
     @Lob
     private String recipeNotes;
 
-    public Long getId()
+    public Notes()
     {
-        return id;
     }
 
-    public void setId(Long id)
+    protected boolean canEqual(Object other)
     {
-        this.id = id;
+        return other instanceof Notes;
     }
 
-    public Recipe getRecipe()
-    {
-        return recipe;
-    }
-
-    public void setRecipe(Recipe recipe)
-    {
-        this.recipe = recipe;
-    }
-
-    public String getRecipeNotes()
-    {
-        return recipeNotes;
-    }
-
-    public void setRecipeNotes(String recipeNotes)
-    {
-        this.recipeNotes = recipeNotes;
-    }
 }
