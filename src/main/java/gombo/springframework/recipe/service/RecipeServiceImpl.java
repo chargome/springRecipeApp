@@ -5,6 +5,9 @@ import gombo.springframework.recipe.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Slf4j
 @Service
 public class RecipeServiceImpl implements RecipeService
@@ -17,10 +20,15 @@ public class RecipeServiceImpl implements RecipeService
     }
 
     @Override
-    public Iterable<Recipe> getAllRecipes()
+    public Set<Recipe> getAllRecipes()
     {
         log.debug("Recipe service starting");
-        return recipeRepository.findAll();
+
+        Set<Recipe> recipes = new HashSet<>();
+
+        this.recipeRepository.findAll().iterator().forEachRemaining(recipes::add);
+
+        return recipes;
     }
 
     @Override

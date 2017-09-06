@@ -1,24 +1,30 @@
 package gombo.springframework.recipe.controllers;
 
-import gombo.springframework.recipe.models.Category;
-import gombo.springframework.recipe.models.UnitOfMeasure;
-import gombo.springframework.recipe.repositories.CategoryRepository;
-import gombo.springframework.recipe.repositories.UnitOfMeasureRepository;
+import gombo.springframework.recipe.service.RecipeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.swing.text.html.Option;
-import java.util.Optional;
 
 @Slf4j
 @Controller
 public class IndexController
 {
+    private final RecipeService recipeService;
+
+    public IndexController(RecipeService recipeService)
+    {
+        this.recipeService = recipeService;
+    }
+
+
     @RequestMapping({"", "/", "/index"})
-    public String getIndexPage()
+    public String getIndexPage(Model model)
     {
         log.debug("requesting index page");
+
+        model.addAttribute("recipes", recipeService.getAllRecipes());
+
         return "index";
     }
 }

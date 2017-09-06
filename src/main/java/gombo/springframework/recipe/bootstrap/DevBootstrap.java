@@ -96,7 +96,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent>
         /* ######### */
 
         Recipe guacamole = new Recipe();
-        guacamole.setDescription("The BEST guacamole! So easy to make with ripe avocados, salt, serrano chiles, cilantro and lime. Garnish with red radishes or jicama. Serve with tortilla chips.");
+        guacamole.setDescription("The BEST guacamole!");
         guacamole.setPrepTime(10);
         guacamole.setServings(3);
         guacamole.setUrl("http://www.simplyrecipes.com/recipes/perfect_guacamole/");
