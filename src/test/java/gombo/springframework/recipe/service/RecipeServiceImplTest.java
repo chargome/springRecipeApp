@@ -9,9 +9,11 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.anyLong;
 
 public class RecipeServiceImplTest
 {
@@ -44,6 +46,24 @@ public class RecipeServiceImplTest
 
         // Verify that the findAll method is only called once
         Mockito.verify(recipeRepository, Mockito.times(1)).findAll();
+
+    }
+
+    @Test
+    public void getRecipeById()
+    {
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+        Optional<Recipe> recipeOptional = Optional.of(recipe);
+
+        Mockito.when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        Recipe findRecipe = recipeService.getRecipeById(1L);
+
+        assertNotNull("Recipe returned null", findRecipe);
+
+        Mockito.verify(recipeRepository, Mockito.times(1)).findById(anyLong());
+        Mockito.verify(recipeRepository, Mockito.never()).findAll();
 
     }
 

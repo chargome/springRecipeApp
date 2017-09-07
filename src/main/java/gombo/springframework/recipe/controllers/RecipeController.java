@@ -5,6 +5,7 @@ import gombo.springframework.recipe.service.RecipeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Set;
@@ -20,15 +21,13 @@ public class RecipeController
         this.recipeService = recipeService;
     }
 
-    @RequestMapping("/recipes")
-    public String getRecipes(Model model)
+    @RequestMapping("/recipe/show/{id}")
+    public String getRecipe(@PathVariable String id, Model model)
     {
-        log.debug("requesting recipes page");
 
-        Iterable<Recipe> allRecipes = recipeService.getAllRecipes();
+        model.addAttribute("recipe", recipeService.getRecipeById(Long.valueOf(id)));
 
-        model.addAttribute("allRecipes", allRecipes);
-
-        return "allRecipes";
+        return "recipe/show";
     }
+
 }
