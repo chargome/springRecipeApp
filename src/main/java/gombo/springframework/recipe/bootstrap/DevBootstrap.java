@@ -57,7 +57,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent>
         // Get UOM
         Optional<UnitOfMeasure> uomTsp = unitOfMeasureRepository.findByDescription("Teaspoon");
         Optional<UnitOfMeasure> uomTbsp = unitOfMeasureRepository.findByDescription("Tablespoon");
-        Optional<UnitOfMeasure> uomPiece = unitOfMeasureRepository.findByDescription("Piece");
+        Optional<UnitOfMeasure> uomPiece = unitOfMeasureRepository.findByDescription("Piece(s)");
         Optional<UnitOfMeasure> uomDash = unitOfMeasureRepository.findByDescription("Dash");
         Optional<UnitOfMeasure> uomPint = unitOfMeasureRepository.findByDescription("Pint");
         Optional<UnitOfMeasure> uomCup = unitOfMeasureRepository.findByDescription("Cup");
