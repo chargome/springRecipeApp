@@ -1,6 +1,7 @@
 package gombo.springframework.recipe.converters;
 
 import gombo.springframework.recipe.commands.CategoryCommand;
+import gombo.springframework.recipe.models.Category;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -8,6 +9,8 @@ import static org.junit.Assert.*;
 
 public class CategoryCommandToCategoryTest
 {
+    static final Long ID_VALUE = 1L;
+    static final String DESCRIPTION = "description";
     CategoryCommandToCategory converter;
 
     @Before
@@ -31,6 +34,17 @@ public class CategoryCommandToCategoryTest
     @Test
     public void convert()
     {
+        //given
+        CategoryCommand categoryCommand = new CategoryCommand();
+        categoryCommand.setId(ID_VALUE);
+        categoryCommand.setDescription(DESCRIPTION);
+
+        //when
+        Category category = converter.convert(categoryCommand);
+
+        //then
+        assertEquals(ID_VALUE, category.getId());
+        assertEquals(DESCRIPTION, category.getDescription());
 
     }
 
