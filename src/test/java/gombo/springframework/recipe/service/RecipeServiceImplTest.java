@@ -27,7 +27,7 @@ public class RecipeServiceImplTest
     {
         MockitoAnnotations.initMocks(this);
 
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, null, null);
     }
 
     @Test

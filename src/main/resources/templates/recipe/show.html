@@ -17,13 +17,13 @@
             crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </head>
 <body>
+<!--/*@thymesVar id="recipe" type="gombo.springframework.recipe.models.Recipe"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="pannel-group">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <!--/*@thymesVar id="recipe" type="gombo.springframework.recipe.models.Recipe"*/-->
                         <h1 class="panel-title" th:text="${recipe.description}">Recipe Description Here!</h1>
                     </div>
                     <div class="panel-body">
@@ -33,7 +33,6 @@
                             </div>
                             <div class="col-md-9">
                                 <ul>
-                                    <!--/*@thymesVar id="recipe" type="gombo.springframework.recipe.models.Recipe"*/-->
                                     <li th:each="category : ${recipe.categories}" th:text="${category.description}">cat one</li>
                                     <li th:remove="all">cat two</li>
                                     <li th:remove="all">cat three</li>
@@ -45,14 +44,12 @@
                                 <p>Prep Time:</p>
                             </div>
                             <div class="col-md-3">
-                                <!--/*@thymesVar id="recipe" type="gombo.springframework.recipe.models.Recipe"*/-->
                                 <p th:text="${(recipe.prepTime + ' Min')}">30 min</p>
                             </div>
                             <div class="col-md-3">
                                 <p>Difficulty:</p>
                             </div>
                             <div class="col-md-3">
-                                <!--/*@thymesVar id="recipe" type="gombo.springframework.recipe.models.Recipe"*/-->
                                 <p th:text="${recipe.difficulty}">Easy</p>
                             </div>
                         </div>
@@ -61,14 +58,12 @@
                                 <p>Cooktime:</p>
                             </div>
                             <div class="col-md-3">
-                                <!--/*@thymesVar id="recipe" type="gombo.springframework.recipe.models.Recipe"*/-->
                                 <p th:text="${(recipe.cookTime + ' Min')}">30 min</p>
                             </div>
                             <div class="col-md-3">
                                 <p>Servings:</p>
                             </div>
                             <div class="col-md-3">
-                                <!--/*@thymesVar id="recipe" type="gombo.springframework.recipe.models.Recipe"*/-->
                                 <p th:text="${recipe.servings}">4</p>
                             </div>
                         </div>
@@ -77,14 +72,13 @@
                                 <p>Source:</p>
                             </div>
                             <div class="col-md-3">
-                                <!--/*@thymesVar id="recipe" type="gombo.springframework.recipe.models.Recipe"*/-->
                                 <p th:text="${recipe.source}">30 min</p>
                             </div>
                             <div class="col-md-3">
                                 <p>URL:</p>
                             </div>
                             <div class="col-md-3">
-                                <!--/*@thymesVar id="recipe" type="gombo.springframework.recipe.models.Recipe"*/-->
+
                                 <p th:text="${recipe.url}">http://www.example.com</p>
                             </div>
                         </div>
@@ -97,8 +91,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <!--/*@thymesVar id="recipe" type="gombo.springframework.recipe.models.Recipe"*/-->
-                                <ul >
+                        <ul >
                                     <li th:each="ingredient: ${recipe.ingredients}"
                                         th:text="${(ingredient.getAmount() +
                                         ' ' + ingredient.getUom().getDescription() +
@@ -117,7 +110,6 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <!--/*@thymesVar id="recipe" type="gombo.springframework.recipe.models.Recipe"*/-->
                                 <p th:text="${recipe.directions}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
                             </div>
                         </div>
@@ -130,7 +122,6 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <!--/*@thymesVar id="recipe" type="gombo.springframework.recipe.models.Recipe"*/-->
                                 <p th:text="${recipe.notes.recipeNotes}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
                             </div>
                         </div>
